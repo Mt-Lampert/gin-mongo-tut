@@ -11,8 +11,8 @@ import (
 )
 
 func main() {
-	ctx, _ := context.WithTimeout(context.Background(), 5 * time.Second)
-	// guarantee that the connection to MongoDB 
+	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
+	// guarantee that the connection to MongoDB
 	// will be properly unplugged.
 	defer mgH.Disconnect(ctx)
 
@@ -21,6 +21,7 @@ func main() {
 	// define a route
 	router.GET("/", index)
 	router.GET("/pingdb", pingDB)
+	router.GET("/allpodcasts", getAllPodcasts)
 
 	// run the server
 	router.Run("localhost:8080")
@@ -44,4 +45,15 @@ func pingDB(c *gin.Context) {
 	cancelTO()
 	// We made it this far, so ... Woohooo!
 	c.JSON(http.StatusOK, gin.H{"message": "We could ping to MongoDB!"})
+}
+
+// callback for the GET '/allpodcasts' route
+func getAllPodcasts(c *gin.Context) {
+	thePodCasts, err := dbGetAllPodcasts()
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Database error. Sorry."})
+	}
+
+	c.JSON(http.StatusOK, thePodCasts)
 }
