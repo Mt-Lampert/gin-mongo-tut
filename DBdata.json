@@ -2,26 +2,24 @@
   {
     "title": "The Polyglot Developer Podcast",
     "author": "Nic Raboy",
-    "createdAt": 1653892391,
     "episodes": [
       {
         "title": "GraphQL for API development",
         "desc": "Learn about GraphQL development in this episode of this podcast",
-        "duration": 25,
-        "createdAt": 1653892766
+        "duration": "25",
+        "createdAt": "1653892766"
       }
     ]
   },
   {
     "title": "Kein Mucks -- Der Krimi Podcast von Radio Bremen",
     "author": "Bastian Pastewka",
-    "createdAt": 1653892883,
     "episodes": [
       {
         "title": "Der Fall Dr Crippen",
         "desc": "Die Frau eines Arztes verschwindet spurlos. Als man sie findet, tot in ihrem Keller, befindet sich ihr Witwer schon auf dem Weg nach Kanada ...",
-        "duration": 51,
-        "createdAt": 1653892904
+        "duration": "51",
+        "createdAt": "1653892904"
       }
     ]
   }

@@ -14,16 +14,15 @@ import (
 type Episode struct {
 	Title     string `bson:"title"     json:"title"`
 	Desc      string `bson:"desc"      json:"desc"`
-	Duration  int32  `bson:"duration"  json:"duration"`
-	CreatedAt int64  `bson:"createdAt" json:"createdAt"`
+	Duration  string `bson:"duration"  json:"duration"`
+	CreatedAt string `bson:"createdAt" json:"createdAt"`
 }
 
 type Podcast struct {
-	ID        primitive.ObjectID `bson:"_id,omitempty"       json:"id"`
-	Title     string             `bson:"title,omitempty"     json:"title"`
-	Author    string             `bson:"author,omitempty"    json:"author"`
-	CreatedAt int64              `bson:"createdAt,omitempty" json:"createdAt"`
-	Episodes  []Episode          `bson:"episodes,omitempty"  json:"episodes"`
+	ID       primitive.ObjectID `bson:"_id,omitempty"       json:"id"`
+	Title    string             `bson:"title,omitempty"     json:"title"`
+	Author   string             `bson:"author,omitempty"    json:"author"`
+	Episodes []Episode          `bson:"episodes"  json:"episodes"`
 }
 
 // connection string for MongoDB
