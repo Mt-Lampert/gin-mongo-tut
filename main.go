@@ -11,10 +11,11 @@ import (
 )
 
 func main() {
-	ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, delCtx := context.WithTimeout(context.Background(), 5*time.Second)
 	// guarantee that the connection to MongoDB
 	// will be properly unplugged.
 	defer mgH.Disconnect(ctx)
+	defer delCtx()
 
 	// define a router
 	router := gin.Default()
@@ -22,6 +23,8 @@ func main() {
 	router.GET("/", index)
 	router.GET("/pingdb", pingDB)
 	router.GET("/allpodcasts", getAllPodcasts)
+
+	router.POST("/addPodcast", addPodcast)
 
 	// run the server
 	router.Run("localhost:8080")
@@ -56,4 +59,27 @@ func getAllPodcasts(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, thePodCasts)
+}
+
+func addPodcast(c *gin.Context) {
+	var newPodcast Podcast
+
+	err := c.BindJSON(&newPodcast)
+	if err != nil {
+		c.JSON(http.StatusBadRequest,
+			gin.H{"message": "Could not handle request body!"})
+		return
+	}
+
+	err = dbAddPodcast(&newPodcast)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Could not write to the database."})
+	}
+
+	c.JSON(http.StatusOK,
+		gin.H{
+			"message": "successfully inserted.",
+			"body":    newPodcast,
+		})
 }

@@ -72,3 +72,16 @@ func dbGetAllPodcasts() ([]Podcast, error) {
 	}
 	return podcasts, nil
 }
+
+func dbAddPodcast(pc *Podcast) error {
+	ctx, delCtx := context.WithTimeout(context.Background(), 5*time.Second)
+	defer delCtx()
+	podcasts := mgH.Database(dbase).Collection(coll)
+
+	_, err := podcasts.InsertOne(ctx, pc)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
