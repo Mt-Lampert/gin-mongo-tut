@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log"
 	"time"
 
@@ -73,15 +74,24 @@ func dbGetAllPodcasts() ([]Podcast, error) {
 	return podcasts, nil
 }
 
-func dbAddPodcast(pc *Podcast) error {
+func dbAddPodcast(pc *Podcast) (primitive.ObjectID, error) {
 	ctx, delCtx := context.WithTimeout(context.Background(), 5*time.Second)
 	defer delCtx()
 	podcasts := mgH.Database(dbase).Collection(coll)
 
-	_, err := podcasts.InsertOne(ctx, pc)
+	result, err := podcasts.InsertOne(ctx, pc)
 	if err != nil {
-		return err
+		return primitive.NilObjectID, err
 	}
 
-	return nil
+	// creating Hex string representation for the ObjectID of the new podcast
+	// result.InsertedID represents an 'interface{}' type
+	// which must be cast as 'primitive.ObjectID'
+	newPodcastID, ok := result.InsertedID.(primitive.ObjectID)
+
+	if ok {
+		return newPodcastID, nil
+	}
+
+	return primitive.NilObjectID, errors.New("could not retrieve ObjectID to Hex string")
 }

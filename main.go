@@ -71,11 +71,12 @@ func addPodcast(c *gin.Context) {
 		return
 	}
 
-	err = dbAddPodcast(&newPodcast)
-
+	newPodcastID, err := dbAddPodcast(&newPodcast)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Could not write to the database."})
 	}
+
+  newPodcast.ID = newPodcastID
 
 	c.JSON(http.StatusOK,
 		gin.H{
