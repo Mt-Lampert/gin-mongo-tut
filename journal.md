@@ -3,6 +3,17 @@
 - Name of the Database we're using: __GinMongoTut__
   - collections: __podcasts__
 
+## 2022-06-12
+
+### 07:10
+
+It's time to finish up this little tutorial, doing MongoDB aggregations (at least, a few).
+Here's what we have to do:
+
+1. Add new data to the database in order to make aggregates worthwhile
+0. Add three new routes for filtering aggregates. That should do for a demo.
+0. Take down the lessons we learned from this endeavor.
+
 ## 2022-06-02
 
 ### 6:34
