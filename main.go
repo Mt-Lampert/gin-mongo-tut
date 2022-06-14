@@ -23,6 +23,7 @@ func main() {
 	router.GET("/", index)
 	router.GET("/pingdb", pingDB)
 	router.GET("/allpodcasts", getAllPodcasts)
+	router.GET("/sherlock", getSherlockStuff)
 
 	router.POST("/addPodcast", addPodcast)
 
@@ -76,11 +77,22 @@ func addPodcast(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Could not write to the database."})
 	}
 
-  newPodcast.ID = newPodcastID
+	newPodcast.ID = newPodcastID
 
 	c.JSON(http.StatusOK,
 		gin.H{
 			"message": "successfully inserted.",
 			"body":    newPodcast,
 		})
+}
+
+func getSherlockStuff(c *gin.Context) {
+	sherlockEpisodes, err := dbGetSherlockEpisodes()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Could not execute this"})
+	}
+	if len(sherlockEpisodes) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"message": "No items found!"})
+	}
+	c.JSON(http.StatusOK, sherlockEpisodes)
 }

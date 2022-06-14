@@ -5,6 +5,18 @@
 
 ## 2022-06-12
 
+### 08:10
+
+It's done! The MongoDB aggregation aggregation route is finally up and running! Had to do 
+a lot of research, try and error, moments of deep frustration, moments of wanting to 
+give up, but finally -- triumph!!! That's why developers do what they do.
+
+For preserving the lessons I learned I still have write TiddlyWiki stuff, but that's not
+worth mentioning here.
+
+
+## 2022-06-12
+
 ### 07:10
 
 It's time to finish up this little tutorial, doing MongoDB aggregations (at least, a few).

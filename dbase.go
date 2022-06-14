@@ -26,6 +26,14 @@ type Podcast struct {
 	Episodes []Episode          `bson:"episodes"  json:"episodes"`
 }
 
+type NetEpisode struct {
+	ID         primitive.ObjectID `bson:"_id" json:"podID"`
+	Title      string             `bson:"title" json:"podTitle"`
+	EpTitle    string             `bson:"epTitle" json:"epTitle"`
+	EpDuration string             `bson:"epDuration" json:"duration"`
+	CreatedAt  primitive.DateTime `bson:"createdAt" json:"createdAt"`
+}
+
 // connection string for MongoDB
 var mongoConnect = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
 
@@ -94,4 +102,35 @@ func dbAddPodcast(pc *Podcast) (primitive.ObjectID, error) {
 	}
 
 	return primitive.NilObjectID, errors.New("could not retrieve ObjectID to Hex string")
+}
+
+func dbGetSherlockEpisodes() ([]NetEpisode, error) {
+	ctx, delCtx := context.WithTimeout(context.Background(), 5*time.Second)
+	defer delCtx()
+	pcColl := mgH.Database(dbase).Collection(coll)
+	foundEpisodes := make([]NetEpisode, 0)
+	matchStage := bson.D{{"$match", bson.D{{"episodes.title", primitive.Regex{"Sherlock", ""}}}}}
+	unwindStage := bson.D{{"$unwind", "$episodes"}}
+	projectStage := bson.D{
+		{
+			"$project",
+			bson.D{
+				{"title", 1},
+				{"epTitle", "$episodes.title"},
+				{"epDuration", "$episodes.duration"},
+				{"createdAt", "$episodes.createdAt"},
+			},
+		},
+	}
+	loadedStructCursor, err := pcColl.Aggregate(ctx, mongo.Pipeline{matchStage, unwindStage, matchStage, projectStage})
+	if err != nil {
+		log.Fatal("Could not execute Mongo aggregation!\n", err)
+	}
+
+	err = loadedStructCursor.All(ctx, &foundEpisodes)
+	if err != nil {
+		log.Fatal("Could not convert found Episodes into NetEpisode slice:\n", err)
+	}
+
+	return foundEpisodes, nil
 }

@@ -7,7 +7,7 @@
         "title": "GraphQL for API development",
         "desc": "Learn about GraphQL development in this episode of this podcast",
         "duration": "25",
-        "createdAt": "1653892766"
+        "createdAt": { "$date": "2020-04-17T00:00:00Z" }
       }
     ]
   },
@@ -16,10 +16,58 @@
     "author": "Bastian Pastewka",
     "episodes": [
       {
-        "title": "Der Fall Dr Crippen",
-        "desc": "Die Frau eines Arztes verschwindet spurlos. Als man sie findet, tot in ihrem Keller, befindet sich ihr Witwer schon auf dem Weg nach Kanada ...",
-        "duration": "51",
-        "createdAt": "1653892904"
+        "title": "Jagd auf Dr. Crippen und Der Fall Hofrichter.",
+        "desc": "Zwei wahre Fälle aus den 1960er Jahren von Nikolai von Michalewsky, präsentiert Bastian Pastewka in dieser Folge des Krimi-Podcasts. Im ersten Fall geht es um die totgeglaubte Ehefrau von Dr. Crippen, die wohl doch nicht auf einer USA-Reise an einer Lungenentzündung starb. Im zweiten Stück vergiftet ein Mann, während er einen Brief an seine Braut schreibt. Wer gab ihm Zyankali und warum?",
+        "duration": "45",
+        "createdAt": { "$date": "2021-08-26T00:00:00Z" }
+      },
+      {
+        "title": "Dickie Dick Dickens und Sherlock Holmes",
+        "desc": "Dickie Dick Dickens, der kleine Taschendieb aus Chicago, gerät in die Fänge von Jim Coopers Gangstersyndikat. Mit einer wasserdichten Damen-Präzisionsarmbanduhr fängt alles an.",
+        "duration": "106",
+        "createdAt": { "$date": "2022-03-10T00:00:00Z" }
+      },
+      {
+        "title": "Der Dritte Mann",
+        "desc": "Dunkle Schatten und nasser Asphalt -- Harry Lime, der von seinem Freund Holly Martins im geteilten Wien in den Nachkriegswirren gesucht wird: Der dritte Mann von Graham Greene wurde in der Verfilmung von Carol Reed zum Kult.",
+        "duration": "68",
+        "createdAt": { "$date": "2022-02-10T00:00:00Z" }
+      },
+      { 
+        "title": "Sherlock Holmes und das Geheimnis des weißen Bandes, Teil 1 von 3",
+        "desc": "Das große Sherlock-Holmes-Spezial in \"Kein Mucks!\". Vor dem ersten Teil des Hörspiels blickt Bastian Pastewka ausführlich zurück auf die Geschichte der englischen und deutschsprachigen Sherlock Holmes-Hörspiele und -Verfilmungen. Dann beginnt der erste Teil von \"Das Geheimnis des weißen Bandes\" im vorweihnachtlichen London 1890 mit dem Besuch eines Kunsthändlers, der sich verfolgt fühlt.",
+        "duration": "74",
+        "createdAt": { "$date": "2021-12-09T00:00:00Z" }
+      },
+      { 
+        "title": "Sherlock Holmes und das Geheimnis des weißen Bandes, Teil 2 von 3",
+        "desc": "Kurz vor Weihnachten 1890 erhält Sherlock Holmes den Besuch eines Kunsthändlers, der scheinbar von einem stummen Mann verfolgt wird. Es entspinnt sich ein unglaublicher Fall. Und wir erfahren, warum Holmes Chronist Dr. Watson dieses Abenteuer erst lange nach dem Tode des Londoner Meisterdetektivs erzählen durfte.",
+        "duration": "68",
+        "createdAt": { "$date": "2021-12-16T00:00:00Z" }
+      },
+      { 
+        "title": "Sherlock Holmes und das Geheimnis des weißen Bandes, Teil 3 von 3",
+        "desc": "London, kurz vor Weihnachten 1890. Ein Fall entwickelte sich dramatisch für Meisterdetektiv Sherlock Holmes. Nach einem Besuch in einer Opium-Höhle wurde er festgenommen und sein treuer Dr. Watson versucht nun alles, um ihn aus dem Gefängnis zu befreien. Denn die beiden müssen gemeinsam herausfinden, wer einen Straßenjungen ermordete. ",
+        "duration": "69",
+        "createdAt": { "$date": "2021-12-16T00:00:00Z" }
+      },
+      {
+        "title": "Inselfrieden",
+        "desc": "Aus dem Gefängnis ausgebrochen, will sich ein Seemann an Kommissar Berger rächen: Er belauert dessen Frau in ihrem Sommerhaus – auf einer einsamen Insel in der Ostsee.",
+        "duration": "50",
+        "createdAt": { "$date": "2021-06-03T00:00:00Z" }
+      },
+      {
+        "title": "Spaeter Besuch",
+        "desc": "Eine von Evelyn Hamann gespielte Ehefrau kehrt nach einem lagen Opernabend nach Hause zurück und finde ihren Gatten tot im Flur vor – am Fuße einer steilen Treppe. War es ein Unfall oder hatte er etwa noch späten Besuch?",
+        "duration": "57",
+        "createdAt": { "$date": "2021-08-05T00:00:00Z" }
+      },
+      {
+        "title": "Maigret und der Minister",
+        "desc": "Mitten in der Nacht erhält der berühmte Kommissar Maigret den Anruf eines verzweifelten Ministers. Ein brisantes Gutachten sorgt für Aufsehen. Maigret muss in diesem Hörspiel von 1957 einen Politskandal aufdecken.",
+        "duration": "83",
+        "createdAt": { "$date": "2021-05-06T00:00:00Z" }
       }
     ]
   }
